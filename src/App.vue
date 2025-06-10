@@ -13,8 +13,6 @@ const getData = async () => {
   try {
     const { data } = await axios.get('https://pokeapi.co/api/v2/pokemon?limit=20');
     const pokemones = [];
-    //console.log(data);
-    //console.log(data.results);
     for (const { url } of data.results) {
       const { data } = await axios.get(url);
       pokemones.push({
@@ -57,7 +55,7 @@ onMounted(() => {
         <img src="/International_Pokémon_logo.svg.png" alt="pokemon" class="w-50" />
       </div>
       <h1>¿Quién es este pokemon?</h1>
-      <p>Pokemones encontrados: {{counter}}</p>
+      <p>Pokemones encontrados: <span class="text-success">{{counter}}</span></p>
       <CardPoke v-for="(poke, i) in pokemonData" :key="i" :name="poke.name" :image="poke.image"
         :descubierto="poke.descubierto" @send="comprobar" />
     </div>

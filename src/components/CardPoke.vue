@@ -25,12 +25,12 @@ const send = ()=> {
 
 <template>
 
-    <div class="card border border-0 my-3" style="width: 16rem;">
+    <div class="card border-0 my-3" style="width: 16rem;">
         <img :class="[!descubierto ? 'filter' : '', 'pokemon-image', 'mx-auto']" :src=image>
         <span v-if="descubierto">{{ name }}</span>
-        <form v-show="!descubierto" @submit.prevent="send">
+        <form class="mt-2" v-show="!descubierto" @submit.prevent="send">
             <input v-model="inputPoke" type="text">
-            <button>Enviar</button>
+            <button type="button" class="btn btn-outline-success my-2">Enviar</button>
         </form>
     </div>
 
