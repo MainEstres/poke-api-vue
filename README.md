@@ -1,29 +1,33 @@
-# desafio-evaluado
+# PokeAPI Vue
 
-This template should help get you started developing with Vue 3 in Vite.
+![Portada](./public/portada.png)
 
-## Recommended IDE Setup
+Una aplicación construida con **Vue.js** que consume datos de la [PokeAPI](https://pokeapi.co/) para mostrar información sobre Pokémon.
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
 
-## Customize configuration
+## 🛠️ Tecnologías utilizadas
 
-See [Vite Configuration Reference](https://vite.dev/config/).
+- [Vue.js 3](https://vuejs.org/)
+- [Axios](https://axios-http.com/) para llamadas HTTP
+- [Vue Router](https://router.vuejs.org/) para navegación
+- CSS / Bootstrap
 
-## Project Setup
+## 📦 Instalación
 
-```sh
+1. Clona el repositorio:
+
+   ```bash
+   git clone https://github.com/MainEstres/poke-api-vue.git
+   cd poke-api-vue
+
+## 2.Instala las dependencias:
+
+```sh 
 npm install
 ```
 
-### Compile and Hot-Reload for Development
+## 3. Ejecuta el servidor de desarrollo:
 
 ```sh
 npm run dev
-```
-
-### Compile and Minify for Production
-
-```sh
-npm run build
 ```
