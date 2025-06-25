@@ -50,7 +50,7 @@ onMounted(() => {
 
 <template>
   <div class="container">
-    <div class="row text-center">
+    <div class="d-flex justify-content-center row text-center ">
       <div>
         <img src="/International_Pokémon_logo.svg.png" alt="pokemon" class="w-50" />
       </div>

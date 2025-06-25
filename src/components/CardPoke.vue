@@ -11,7 +11,8 @@ const props = defineProps({
 
 const inputPoke = ref('');
 
-const send = ()=> {
+const send = (e)=> {
+    e.preventDefault()
  if(inputPoke.value.toLowerCase().trim() === props.name.toLowerCase()){
     props.descubierto = true
     emit('send', props.name)
@@ -28,9 +29,9 @@ const send = ()=> {
     <div class="card border-0 my-3" style="width: 16rem;">
         <img :class="[!descubierto ? 'filter' : '', 'pokemon-image', 'mx-auto']" :src=image>
         <span v-if="descubierto">{{ name }}</span>
-        <form class="mt-2" v-show="!descubierto" @submit.prevent="send">
-            <input v-model="inputPoke" type="text">
-            <button type="button" class="btn btn-outline-success my-2">Enviar</button>
+        <form class="mt-2" v-show="!descubierto" >
+            <input placeholder="Nombre Pokemon" v-model="inputPoke" type="text">
+            <button type="submit" @click="send" class="btn btn-outline-success my-2">Enviar</button>
         </form>
     </div>
 
