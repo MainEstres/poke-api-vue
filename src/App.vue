@@ -4,14 +4,20 @@ import axios from 'axios';
 import CardPoke from './components/CardPoke.vue';
 
 const pokemonData = ref([])
-console.log(pokemonData.value)
+const numPoke = ref()
+
 
 
 
 
 const getData = async () => {
   try {
-    const { data } = await axios.get('https://pokeapi.co/api/v2/pokemon?limit=20');
+    if(isNaN(numPoke) && numPoke.value > 150){
+      alert("Por favor, ingresa un número válido mayor que 0 y menor a 150");
+      return;
+    }
+
+    const { data } = await axios.get(`https://pokeapi.co/api/v2/pokemon?limit=${numPoke.value}`);
     const pokemones = [];
     for (const { url } of data.results) {
       const { data } = await axios.get(url);
@@ -22,6 +28,7 @@ const getData = async () => {
       });
     }
     pokemonData.value = pokemones;
+    console.log( numPoke.value);
 
   } catch (error) {
     console.error(error);
@@ -43,9 +50,6 @@ const counter = computed(() => {
     return pokemonData.value.filter((pokemon) => pokemon.descubierto).length;
   });
 
-onMounted(() => {
-  getData();
-})
 </script>
 
 <template>
@@ -56,6 +60,11 @@ onMounted(() => {
       </div>
       <h1>¿Quién es este pokemon?</h1>
       <p>Pokemones encontrados: <span class="text-success">{{counter}}</span></p>
+      <div>
+        <h4>¿Cuantos Pokemons quieres cargar?</h4>
+        <input type="number" v-model="numPoke">
+        <button @click=getData()>Cargar</button>
+      </div>
       <CardPoke v-for="(poke, i) in pokemonData" :key="i" :name="poke.name" :image="poke.image"
         :descubierto="poke.descubierto" @send="comprobar" />
     </div>
